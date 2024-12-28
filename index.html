@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Certificate Verification</h1>
+  <div id="result" class="message"></div>
+
+  <script>
+    // Hardcoded certificate data for simplicity
+    const certificates = {
+      "CERT001": "Abbas Sayed has earned this certificate by participating in the Tech Winter Break conducted by GDG On Campus CSMU on 29-12-2024.",
+      
+    };
+
+    // Get the certificate ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const certId = urlParams.get('cert_id');
+
+    // Display the verification message
+    const resultDiv = document.getElementById('result');
+    if (certId && certificates[certId]) {
+      resultDiv.innerHTML = `<p class="success">${certificates[certId]}</p>`;
+    } else {
+      resultDiv.innerHTML = '<p class="error">Certificate not found or invalid.</p>';
+    }
+  </script>
+</body>
+</html>
